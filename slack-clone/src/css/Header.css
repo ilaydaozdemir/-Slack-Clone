@@ -31,6 +31,9 @@
   text-align: center;
   min-width: 35vw;
 }
+.header__search > input:focus {
+  outline: none;
+}
 .header__right {
   flex: 0.3;
   display: flex;

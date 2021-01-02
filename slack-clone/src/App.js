@@ -1,4 +1,5 @@
 import Header from './component/Header';
+import Sidebar from './component/Sidebar';
 import './css/App.css';
 
 function App() {
@@ -7,8 +8,11 @@ function App() {
     <div className='app'>
       {/* Header*/}
       <Header />
-      {/* Sidebar*/}
-      {/* React-Router->Chat screen*/}
+      <div className='app__body'>
+        {/* Sidebar*/}
+        <Sidebar />
+        {/* React-Router->Chat screen*/}
+      </div>
     </div>
   );
 }
