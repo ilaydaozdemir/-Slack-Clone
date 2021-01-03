@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/Sidebar.css';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
@@ -13,7 +13,17 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import SidebarOption from './SidebarOption';
+import db from '../firebase';
 function Sidebar() {
+  const [channels, setChannels] = useState([]);
+  useEffect(() => {
+    //Run this code ONCE when the sidebar component load
+    db.collection('rooms').onSnapshot(snapshot =>
+      setChannels(
+        snapshot.docs.map(doc => ({ id: doc.id, name: doc.data().name }))
+      )
+    );
+  }, []);
   return (
     <div className='sidebar'>
       <div className='sidebar__header'>
