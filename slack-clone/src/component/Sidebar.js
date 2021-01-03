@@ -49,6 +49,9 @@ function Sidebar() {
       <SidebarOption Icon={AddIcon} title='Show less' />
       {/*Connect to dB and list all the channels */}
       {/* <SidebarOption/>*/}
+      {channels.map(channel => (
+        <SidebarOption title={channel.name} id={channel.id} />
+      ))}
     </div>
   );
 }
