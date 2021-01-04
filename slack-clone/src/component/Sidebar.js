@@ -13,9 +13,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import SidebarOption from './SidebarOption';
+import { useStateValue } from '../component/StateProvider';
 import db from '../firebase';
 function Sidebar() {
   const [channels, setChannels] = useState([]);
+  const [{ user }] = useStateValue();
   useEffect(() => {
     //Run this code ONCE when the sidebar component load
     db.collection('rooms').onSnapshot(snapshot =>
@@ -28,9 +30,10 @@ function Sidebar() {
     <div className='sidebar'>
       <div className='sidebar__header'>
         <div className='sidebar__info'>
-          <h2>Ilayda Ozdemir</h2>
+          <h2>Ozdemir Programmer</h2>
           <h3>
             <FiberManualRecordIcon />
+            {user?.displayName}
           </h3>
         </div>
         <CreateIcon />
