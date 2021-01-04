@@ -5,6 +5,9 @@ import StarOutlinedIcon from '@material-ui/icons/StarOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import db from '../firebase';
 
+//changes url
+//connects to the database
+//uses Url param(roomId) to fetch room details
 function Chat() {
   const { roomId } = useParams();
   const [roomDetails, setRoomDetails] = useState(null);
