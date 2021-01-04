@@ -4,6 +4,8 @@ import '../css/Login.css';
 import { auth, provider } from '../firebase';
 
 function Login() {
+  //google authentication
+  //user paylasımı firabseden ac
   const signIn = () => {
     auth
       .signInWithPopup(provider)
