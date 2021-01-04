@@ -2,8 +2,12 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import '../css/Login.css';
 import { auth, provider } from '../firebase';
+import { useStateValue } from '../component/StateProvider';
+import { actionTypes } from '../reducer';
 
 function Login() {
+  const [state, dispatch] = useStateValue();
+
   //google authentication
   //user paylasımı firabseden ac
   const signIn = () => {
@@ -11,6 +15,10 @@ function Login() {
       .signInWithPopup(provider)
       .then(result => {
         console.log(result);
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: result.user,
+        });
       })
       .catch(error => {
         alert(error.message);
