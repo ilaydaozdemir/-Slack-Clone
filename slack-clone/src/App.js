@@ -4,6 +4,7 @@ import './css/App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Chat from './component/Chat';
+import Login from './component/Login';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,7 +13,7 @@ function App() {
     <div className='app'>
       <Router>
         {!user ? (
-          <h1>LOGIN page</h1>
+          <Login />
         ) : (
           <>
             {/* Header*/}
