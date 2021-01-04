@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import StarOutlinedIcon from '@material-ui/icons/StarOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import db from '../firebase';
+import Message from './Message';
 
 //changes url
 //connects to the database
@@ -11,21 +12,22 @@ import db from '../firebase';
 function Chat() {
   const { roomId } = useParams();
   const [roomDetails, setRoomDetails] = useState(null);
-  const [roomMessages, setRoomMessages] = useState(null);
+  const [roomMessages, setRoomMessages] = useState([]);
 
   useEffect(() => {
     if (roomId) {
       db.collection('rooms')
         .doc(roomId)
         .onSnapshot(snapshot => setRoomDetails(snapshot.data()));
+
+      db.collection('rooms')
+        .doc(roomId)
+        .collection('messages')
+        .orderBy('timestamp', 'asc')
+        .onSnapshot(snapshot =>
+          setRoomMessages(snapshot.docs.map(doc => doc.data()))
+        );
     }
-    db.collection('rooms')
-      .doc(roomId)
-      .collection('message')
-      .orderBy('timestamp', 'asc')
-      .onSnapshot(snapshot =>
-        setRoomMessages(snapshot.docs.map(doc => doc.data()))
-      );
   }, [roomId]);
   console.log(roomDetails);
   console.log('MESSAGES >>>', roomMessages);
@@ -44,6 +46,18 @@ function Chat() {
             Details
           </p>
         </div>
+      </div>
+
+      <div className='chat__messages'>
+        {/*<Message/> */}
+        {roomMessages.map(({ message, timestamp, user, userImage }) => (
+          <Message
+            message={message}
+            timestamp={timestamp}
+            user={user}
+            userImage={userImage}
+          />
+        ))}
       </div>
     </div>
   );
