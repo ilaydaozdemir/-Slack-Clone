@@ -46,7 +46,7 @@ function Sidebar() {
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title='Channels' />
       <hr />
-      <SidebarOption Icon={AddIcon} title='Show less' />
+      <SidebarOption Icon={AddIcon} addChannelOption title='Add channel' />
       {/*Connect to dB and list all the channels */}
       {/* <SidebarOption/>*/}
       {channels.map(channel => (
