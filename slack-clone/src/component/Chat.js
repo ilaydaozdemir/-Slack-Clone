@@ -5,6 +5,7 @@ import StarOutlinedIcon from '@material-ui/icons/StarOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import db from '../firebase';
 import Message from './Message';
+import ChatInput from './ChatInput';
 
 //changes url
 //connects to the database
@@ -59,6 +60,7 @@ function Chat() {
           />
         ))}
       </div>
+      <ChatInput channelName={roomDetails?.name} />
     </div>
   );
 }
