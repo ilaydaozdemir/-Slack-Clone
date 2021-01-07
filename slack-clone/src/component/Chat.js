@@ -5,7 +5,7 @@ import StarOutlinedIcon from '@material-ui/icons/StarOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import db from '../firebase';
 import Message from './Message';
-import ChatInput from './ChatInput';
+import ChatInput from '../component/ChatInput';
 
 //changes url
 //connects to the database
@@ -30,7 +30,7 @@ function Chat() {
         );
     }
   }, [roomId]);
-  console.log(roomDetails);
+  console.log('roomDetails', roomDetails, roomId);
   console.log('MESSAGES >>>', roomMessages);
   return (
     <div className='chat'>
@@ -60,7 +60,7 @@ function Chat() {
           />
         ))}
       </div>
-      <ChatInput channelName={roomDetails?.name} />
+      <ChatInput channelName={roomDetails?.name} channelId={roomId} />
     </div>
   );
 }
