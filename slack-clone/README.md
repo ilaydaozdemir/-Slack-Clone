@@ -12,7 +12,7 @@
 
 ## Responsive Design
 
-![alt text](https://cdn.discordapp.com/attachments/693075239172833301/796841722389987348/2.jpg)
+![alt text](https://cdn.discordapp.com/attachments/693075239172833301/796843070427365386/4.jpg)
 
 ## How Did I Do
 
